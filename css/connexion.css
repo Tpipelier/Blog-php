@@ -1,0 +1,42 @@
+
+
+
+
+section {
+    display: grid;
+    grid-template-columns: 100px 100px;
+
+    width: fit-content;   
+    margin: 0 auto;       
+
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 2px black solid;
+    border-radius: 5%;
+    transform: rotate(2deg);
+
+
+}
+
+h2{
+    grid-area: 1/1/1/3;
+    text-align:center;
+
+}
+input{
+    width:100%;
+}
+
+form{
+     display: grid;
+     grid-area: 2/1/2/3;
+     gap:10px;
+}
+
+
+
+label{
+    display:block;
+}
+
