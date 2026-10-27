@@ -52,7 +52,7 @@
                 $_SESSION["connecter"] = true;
                 $_SESSION["pseudo"] = $pseudo;   
                 $_SESSION["id"] = $id;  
-                header("location: accueil.php"); 
+                header("location: index.php"); 
 
 
             }

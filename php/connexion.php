@@ -30,11 +30,7 @@
     <?php 
         if (isset($_POST['pseudo']) && isset($_POST['email']) &&  isset($_POST['mdp'])){
             connexion(htmlspecialchars($_POST['pseudo']),htmlspecialchars($_POST['email']),htmlspecialchars($_POST['mdp']));
-        }
-        
-    
-    
-    
+        }    
     ?>
 
 
