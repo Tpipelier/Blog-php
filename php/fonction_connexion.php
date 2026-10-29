@@ -14,7 +14,7 @@
                 $_SESSION["connecter"] = true;
                 $_SESSION["pseudo"] = $pseudo;   
                 $_SESSION["id"]  = $connexion->lastInsertId(); //permet d'obtenir l'id de l'utilisateur car on utilise un auto increments
-                header("location: accueil.php"); 
+                header("location: index.php"); 
 
 
 

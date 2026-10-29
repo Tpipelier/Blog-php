@@ -13,6 +13,9 @@ error_reporting(E_ALL);
         if (isset($page_css)){
             echo '<link rel="stylesheet" type="text/css" href="../css/'.$page_css. '">';
         }
+        if(isset($titre)){
+            echo "<title>".$titre."</title>";
+        }
         
         ?>
     </head>
