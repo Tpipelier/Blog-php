@@ -35,7 +35,7 @@
             $compte_existant = compte_existant($pseudo,$email);
 
             if($compte_existant === true){
-                $stmt = $connexion->prepare("SELECT id,pseudo,email,mdp FROM utilisateur WHERE pseudo = ?");
+                $stmt = $connexion->prepare("SELECT id,pseudo,email,mdp,admin FROM utilisateur WHERE pseudo = ?");
                 $stmt->bindParam(1, $pseudo);
                 $stmt->execute();
 
@@ -52,6 +52,11 @@
                 $_SESSION["connecter"] = true;
                 $_SESSION["pseudo"] = $pseudo;   
                 $_SESSION["id"] = $id;  
+                if($utilisateur['admin'] == 0){
+                    $_SESSION["admin"] = true;
+
+                }
+
                 header("location: index.php"); 
 
 
