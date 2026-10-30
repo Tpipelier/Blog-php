@@ -1,6 +1,6 @@
 <?php 
     $page_css = "connexion.css";
-    $titre = "Connexion"
+    $titre = "Connexion";
     require_once('header.php');
     require_once('fonction_connexion.php');
     //
