@@ -23,7 +23,7 @@ function cree_article(string $titre, string $description, array $ids_categorie )
 
                 $stmt->execute();
             }
-            header('index.php');
+            header("location: index.php"); 
             exit(0);
 
 
