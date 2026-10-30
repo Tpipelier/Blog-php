@@ -3,6 +3,8 @@ $titre = "Blog";
 require_once('header.php');
 require_once('functions.php');
 
+
+
 try {
     $connexion = new PDO('mysql:host=localhost;dbname=blog;', 'root', '');
     $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -35,6 +37,7 @@ if (!empty($_GET['pseudo'])) {
     <a href="index.php">Réinitialiser</a>
 </form>
 <?php
+
     if(!empty($vals)){
         foreach ($vals as $row) {
                 showArticle($row['titre'], $row['pseudo']);

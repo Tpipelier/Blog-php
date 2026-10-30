@@ -15,6 +15,7 @@
                 $_SESSION["pseudo"] = $pseudo;   
                 $_SESSION["id"]  = $connexion->lastInsertId(); //permet d'obtenir l'id de l'utilisateur car on utilise un auto increments
                 header("location: index.php"); 
+                exit(0);
 
 
 
@@ -51,14 +52,19 @@
                 }
                 $_SESSION["connecter"] = true;
                 $_SESSION["pseudo"] = $pseudo;   
-                $_SESSION["id"] = $id;  
-                if($utilisateur['admin'] == 0){
+                $_SESSION["id"] = $utilisateur["id"];
+
+                if($utilisateur['admin'] == 1){
                     $_SESSION["admin"] = true;
 
                 }
-
-                header("location: index.php"); 
-
+                else{
+                    $_SESSION["admin"] = false;
+                }
+           
+                
+                header("location: index.php");
+                exit(0);
 
             }
             else{
@@ -89,11 +95,13 @@
         $slc_email->bindParam(1, $email);
         $slc_email->execute();
 
- 
 
         $slc_pseudo = $connexion->prepare("SELECT pseudo FROM utilisateur WHERE pseudo = ?");
         $slc_pseudo->bindParam(1, $pseudo);
         $slc_pseudo->execute();
+
+       
+       
 
         if($slc_pseudo->fetch() == false && $slc_email->fetch() == false){
             return false;
