@@ -60,6 +60,10 @@ foreach ($categories as $cat) {
     <button type="submit">Filtrer</button>
     <a href="index.php">Réinitialiser</a>
 </form>
+<section>
+    <button><a href="creation_article.php">Créer un article</a></button>
+</section>
+
 <?php
 if (!empty($vals)) {
     foreach ($vals as $row) {
