@@ -1,6 +1,6 @@
 <?php 
 
-	function showArticle(?string $titreArticle, string $nomAuteur) : void {
+	function affiche_article(?string $titreArticle, string $nomAuteur) : void {
 		if(null === $titreArticle){
 			return;
 		}

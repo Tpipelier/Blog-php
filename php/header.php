@@ -29,7 +29,7 @@ if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
        
 
         if (!empty($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
-            ?><p>Connecté en tant que :<?php echo $_SESSION["pseudo"]; ?></p><?php
+            ?><p>Connecté en tant que : <?php echo $_SESSION["pseudo"]; ?></p><?php
         }else{
             ?><nav><button><a href="connexion.php">se connecter</a></button></nav><?php
         }
