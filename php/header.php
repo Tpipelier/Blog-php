@@ -11,7 +11,7 @@ if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
 } 
 
 ?>
-<html>
+<!DOCTYPE html>
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <?php

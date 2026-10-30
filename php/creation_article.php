@@ -7,7 +7,7 @@ require_once('fonction_creation_article.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['titre'])  && !empty($_POST['titre']) && isset($_POST['description']) && !empty($_POST['description']) &&  isset($_POST['categorie'])&& !empty($_POST['categorie'])){
-            $code_erreur =  cree_article(htmlspecialchars($_POST['titre']),htmlspecialchars($_POST['description']),htmlspecialchars($_POST['categorie']));
+            $code_erreur =  cree_article(htmlspecialchars($_POST['titre']),htmlspecialchars($_POST['description']),$_POST['categorie']);
     }
     else{
         $code_erreur = -1;
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <textarea name="description" type="text"></textarea>
         </label>
             <label>Catégorie
-            <select name="categorie">
+            <select name="categorie[]" multiple>
                 
             <?php
                 option_categorie();

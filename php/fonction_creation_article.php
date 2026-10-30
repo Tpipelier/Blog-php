@@ -1,7 +1,7 @@
 <?php
 
 
-function cree_article(string $titre, string $description, int $id_categorie ){
+function cree_article(string $titre, string $description, array $ids_categorie ){
      try{
             $connexion = new PDO('mysql:host=localhost;dbname=blog','root','');
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -15,13 +15,16 @@ function cree_article(string $titre, string $description, int $id_categorie ){
 
             $article_id  = $connexion->lastInsertId(); 
             
-            $stmt = $connexion->prepare("INSERT INTO article_categorie(article_id,categorie_id) VALUES (?, ?)"); 
-            $stmt->bindParam(1, $article_id);
-            $stmt->bindParam(2, $id_categorie);
 
-            $stmt->execute();
+            foreach($ids_categorie as $id) {
+                $stmt = $connexion->prepare("INSERT INTO article_categorie(article_id,categorie_id) VALUES (?, ?)"); 
+                $stmt->bindParam(1, $article_id);
+                $stmt->bindParam(2, $id);
 
-            return 0;
+                $stmt->execute();
+            }
+            header('index.php');
+            exit(0);
 
 
 
