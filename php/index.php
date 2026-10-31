@@ -1,7 +1,7 @@
 <?php
 $titre = "Blog";
 require_once('header.php');
-require_once('functions.php');
+require_once('fonction_accueil.php');
 
 try {
     $connexion = new PDO('mysql:host=localhost;dbname=blog;', 'root', '');
@@ -57,6 +57,9 @@ foreach ($categories as $cat) {
         style="margin-right: 15px; <?= ($cat['id'] == $categorie_active && empty($_GET['pseudo'])) ? 'font-weight: bold; text-decoration: underline;' : '' ?>"><?= htmlspecialchars($cat['nom']) ?></a>
     <?php
 }
+if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
+    ?> <a href="modifier_categories.php" class="btn-navigation">/admin modifier les catégories</a><?php
+}
 ?>
 
 <section>
@@ -74,9 +77,9 @@ foreach ($categories as $cat) {
 
     <?php
     if (isset($_SESSION["connecter"])) {
-        ?><button><a href="creation_article.php">Créer un article</a></button><?php
+        ?><a href="creation_article.php" class="btn-navigation">Créer un article</a><?php
     } else {
-        ?><button><a href="connexion.php">Créer un article</a></button><?php
+        ?><a href="connexion.php" class="btn-navigation">Créer un article</a><?php
     }
     ?>
 
