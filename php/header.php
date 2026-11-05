@@ -5,13 +5,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
     
-if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
+if ((!isset(($_SESSION["connecter"])) || $_SESSION["connecter"] === false)  && basename($_SERVER['PHP_SELF']) != 'connexion.php'){
     header("location: connexion.php");
     exit(0);
 } 
 
 if(isset($_POST["deconnexion"])){
-    unset($_SESSION['connecter']);
+    $_SESSION['connecter'] = false;
     unset($_SESSION['pseudo']);
     unset($_SESSION['admin']);
     unset($_SESSION['id']);
