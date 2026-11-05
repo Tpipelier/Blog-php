@@ -5,8 +5,8 @@
 			return;
 		}
         echo "<section>";
-		echo "<h3>$titreArticle</h3>";
-        echo "<p>de $nomAuteur</p>";
+		echo "<h3>".htmlspecialchars($titreArticle)."</h3>";
+        echo "<p>de". htmlspecialchars($nomAuteur)."</p>";
         echo "</section>";
 	}
 

@@ -1,4 +1,5 @@
 <?php
+$page_css = "index.css";
 $titre = "Blog";
 require_once('header.php');
 require_once('fonction_accueil.php');
