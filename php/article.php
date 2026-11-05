@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
            supprimer_commentaire($_POST['com_id'],(int)$_GET['id_article']);
         }
     }
-
+    elseif (isset($_POST['art'])){
+        supprimer_article((int)$_GET['id_article']);
+    }
 }
 
 ?>
@@ -48,6 +50,15 @@ if (!empty($vals)) {
         
         if($row['id']== $_GET['id_article']){
             affiche_article($row['titre'], $row['pseudo'],$row['description']);
+            if($row['pseudo']==$_SESSION['pseudo']){
+                ?>
+                <form method="POST" action="">
+                    <button type="submit" name="art">supprimer article</button>
+                </form>
+                 <?php       
+            }
+
+
             foreach ($com as $line) {
                 if($line['article_id']==$_GET['id_article']){
                     echo "<section>";

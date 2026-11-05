@@ -89,6 +89,27 @@ function supprimer_commentaire(int $commentaire_id, int $article_id){
 
 }
 
+function supprimer_article(int $article_id){
+    try{
+    $commentaire = new PDO('mysql:host=localhost;dbname=blog','root','');
+    $commentaire->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt = $commentaire->prepare("DELETE from  article WHERE id = ? ");
+    $stmt->bindParam(1, $article_id);
+    $stmt->execute();
+
+    header("location: index.php");
+    
+
+    } catch(PDOException $e){
+        die('Erreur PDO : ' . $e->getMessage());
+    }catch(Exception $e){
+        die('Erreur Générale : ' . $e->getMessage());
+    }
+
+
+
+}
    
 
 
