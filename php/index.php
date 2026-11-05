@@ -47,9 +47,9 @@ if (isset($_GET['pseudo'])) {
 }
 ?>
 
-<div>
+<section>
     <h1>Blog php</h1>
-</div>
+</section>
 
 <?php
 foreach ($categories as $cat) {
