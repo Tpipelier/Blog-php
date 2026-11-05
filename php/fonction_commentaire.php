@@ -52,7 +52,7 @@ function creation_commentaire(string $description, int $article_id, string $pseu
 
             $stmt->execute();
 
-            //header("location: article.php");
+            header("location: article.php?id_article=$article_id");
 
          
 
@@ -69,10 +69,15 @@ function supprimer_commentaire(int $commentaire_id, int $article_id){
     $commentaire = new PDO('mysql:host=localhost;dbname=blog','root','');
     $commentaire->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $commentaire->prepare("DELETE INTO  commentaire WHERE id =$commentaire_id and article_id=$article_id");
-        
-    header("location: article.php");
-    exit(0);
+    $stmt = $commentaire->prepare("DELETE from  commentaire WHERE id = ? and article_id=?");
+    $stmt->bindParam(1, $commentaire_id);
+    $stmt->bindParam(2, $article_id);
+            
+
+    $stmt->execute();
+
+    header("location: article.php?id_article=$article_id");
+    //exit(0);
 
     } catch(PDOException $e){
         die('Erreur PDO : ' . $e->getMessage());
