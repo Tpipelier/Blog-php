@@ -3,9 +3,7 @@ $titre = "Article";
 require_once('header.php');
 require_once('fonction_commentaire.php');
 
-$donnees = recuperer_donnees_article();
-$vals = $donnees['articles'];
-$com = $donnees['commentaire'];
+
 
 
 
@@ -19,7 +17,8 @@ if (isset($_SESSION["connecter"]) && !empty($_POST['commentaire'])) {
 ?>
 
 
-<form method="POST" action="">
+
+<form method="POST" action="article.php?id_article=<?php echo $_GET['id_article']; ?>">
     <label for="commentaire">commentaire :</label>
     <input type="text" name="commentaire" id="commentaire" placeholder="Entrez un commentaire" />
     <button type="submit">envoyer</button>
@@ -29,6 +28,9 @@ if (isset($_SESSION["connecter"]) && !empty($_POST['commentaire'])) {
 
 
 
+$donnees = recuperer_donnees_article();
+$vals = $donnees['articles'];
+$com = $donnees['commentaire'];
 
 
 if (!empty($vals)) {

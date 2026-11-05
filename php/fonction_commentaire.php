@@ -54,7 +54,7 @@ function creation_commentaire(string $description, int $article_id, string $pseu
 
             //header("location: article.php");
 
-            exit(0);
+         
 
     } catch(PDOException $e){
         die('Erreur PDO : ' . $e->getMessage());
