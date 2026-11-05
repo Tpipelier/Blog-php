@@ -1,11 +1,12 @@
 <?php
-function affiche_article(?string $titreArticle, string $nomAuteur): void
+function affiche_article(?string $titreArticle, string $nomAuteur, string $description): void
 {
 	if (null === $titreArticle) {
 		return;
 	}
 	echo "<section>";
-	echo "<h3>" . htmlspecialchars($titreArticle) . "</h3>";
+	echo "<h2>" . htmlspecialchars($titreArticle) . "</h2>";
+	echo "<h2>" . htmlspecialchars($description) . "</h2>";
 	echo "<p> de" . htmlspecialchars($nomAuteur) . "</p>";
 	echo "</section>";
 }
@@ -27,8 +28,14 @@ function recuperer_donnees_article()
 	$res = $connexion->query($sql, PDO::FETCH_ASSOC);
 	$vals = $res->fetchAll();
 	
+
+    $sql = 'SELECT * FROM commentaire';
+	$res = $connexion->query($sql, PDO::FETCH_ASSOC);
+	$com = $res->fetchAll();
+
 	return [
-		'articles' => $vals
+		'articles' => $vals,
+        'commentaire' => $com
 	];
 }
 

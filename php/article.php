@@ -5,6 +5,7 @@ require_once('fonction_commentaire.php');
 
 $donnees = recuperer_donnees_article();
 $vals = $donnees['articles'];
+$com = $donnees['commentaire'];
 ?>
 
 <div>
@@ -20,7 +21,16 @@ $vals = $donnees['articles'];
 if (!empty($vals)) {
     foreach ($vals as $row) {
         
-        affiche_article($row['titre'], $row['pseudo']);
+        if($row['id']== $_GET['id_article']){
+            affiche_article($row['titre'], $row['pseudo'],$row['description']);
+            foreach ($com as $line) {
+                if($line['article_id']==$_GET['id_article']){
+                    echo "<section>";
+                    echo "<h3>" . htmlspecialchars($line['description']) . "</h3>";
+                    echo "</section>";
+                }
+            }
+        }
     }
 } else {
     echo '<p>article(s) introuvable(s)</p>';

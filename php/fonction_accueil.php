@@ -4,6 +4,7 @@ function affiche_article(?string $titreArticle, string $nomAuteur, int $id_artic
 	if (null === $titreArticle) {
 		return;
 	}
+	//$_SESSION['id'] = $id_article ;
 	echo "<section>";
 	echo "<a href='./article.php?id_article=$id_article'"; 
 	echo "<h3>" . htmlspecialchars($titreArticle) . "</h3>";
