@@ -10,7 +10,6 @@ $categorie_active = $donnees['categorie_active'];
 $vals = $donnees['articles'];
 ?>
 
-
 <?php
 foreach ($categories as $cat) {
     ?>
@@ -19,7 +18,8 @@ foreach ($categories as $cat) {
     <?php
 }
 if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
-    ?> <a href="modifier_categories.php" ">/admin modifier les catégories</a>
+    ?> 
+    <a href="modifier_categories.php">/admin modifier les catégories</a>
     <?php
 }
 ?>
@@ -39,9 +39,9 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
 
     <?php
     if (isset($_SESSION["connecter"])) {
-        ?><a href="creation_article.php" ">Créer un article</a><?php
+        ?><a href="creation_article.php">Créer un article</a><?php
     } else {
-        ?><a href="connexion.php" ">Créer un article</a><?php
+        ?><a href="connexion.php">Créer un article</a><?php
     }
     ?>
 
@@ -49,8 +49,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
 
 <?php
 if (!empty($vals)) {
-    foreach ($vals as $row) {
-        
+    foreach ($vals as $row) {        
         affiche_article($row['titre'], $row['pseudo'],$row['id']);
     }
 } else {
