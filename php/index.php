@@ -53,7 +53,8 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
 <?php
 if (!empty($vals)) {
     foreach ($vals as $row) {
-        affiche_article($row['titre'], $row['pseudo']);
+        
+        affiche_article($row['titre'], $row['pseudo'],$row['id']);
     }
 } else {
     echo '<p>article(s) introuvable(s)</p>';

@@ -1,12 +1,14 @@
 <?php
-function affiche_article(?string $titreArticle, string $nomAuteur): void
+function affiche_article(?string $titreArticle, string $nomAuteur, int $id_article): void
 {
 	if (null === $titreArticle) {
 		return;
 	}
 	echo "<section>";
+	echo "<a href='./article.php?id_article=$id_article'"; 
 	echo "<h3>" . htmlspecialchars($titreArticle) . "</h3>";
 	echo "<p> de" . htmlspecialchars($nomAuteur) . "</p>";
+	echo "</a>";
 	echo "</section>";
 }
 function recuperer_donnees_article()
