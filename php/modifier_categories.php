@@ -67,8 +67,8 @@ try {
     </form>
 </section>
 
-<section class="section-danger">
-    <form method="POST" style="border-left: 5px solid #d9534f;"
+<section>
+    <form method="POST"
         onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?');">
         <h3>3. Supprimer une catégorie</h3>
 
@@ -85,7 +85,7 @@ try {
             ?>
         </select>
 
-        <button type="submit" name="action" value="delete" class="btn-danger">Supprimer</button>
+        <button type="submit" name="action" value="delete">Supprimer</button>
     </form>
 </section>
 
