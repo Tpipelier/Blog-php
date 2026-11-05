@@ -10,6 +10,20 @@ if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
     exit(0);
 } 
 
+if(isset($_POST["deconnexion"])){
+    unset($_SESSION['connecter']);
+    unset($_SESSION['pseudo']);
+    unset($_SESSION['admin']);
+    unset($_SESSION['id']);
+
+    header("location: connexion.php");
+    exit(0);
+            
+} 
+            
+
+       
+
 ?>
 <!DOCTYPE html>
     <head>
@@ -28,15 +42,28 @@ if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
     <body>
         <header>
             <?php 
-        
+       
 
-            if (!empty($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
-                ?><p>Connecté en tant que : <?php echo $_SESSION["pseudo"]; ?></p><?php
-            }else{
-                ?><nav><button><a href="connexion.php">se connecter</a></button></nav><?php
-            }
-        
-            ?>
+        if (!empty($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
+            ?><p>Connecté en tant que : <?php echo $_SESSION["pseudo"]; ?></p>
+            
+            <form method=POST action="">
+                <button type="submit", name=deconnexion>Déconnexion</button>
+                
+
+
+
+            </form>
+            <?php
+
+            
+
+        }
+
+
+       
+    
+        ?>
         </header>
 
 
