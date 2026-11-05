@@ -1,0 +1,109 @@
+/* =========================================
+   Variables & Reset (Communs)
+   ========================================= */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --hover-color: #2980b9;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --bg-color: #f8f9fa;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --border-radius: 6px;
+    --spacing: 20px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: var(--spacing);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   Typographie Globale
+   ========================================= */
+h1 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing);
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+}
+
+/* =========================================
+   Boutons (Partagés partout)
+   ========================================= */
+.btn-navigation, 
+button[type="submit"], 
+.form-reset-link,
+.btn-warning,
+.btn-danger {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover, .btn-navigation:hover { background-color: var(--hover-color); }
+
+.form-reset-link { background-color: #95a5a6; }
+.form-reset-link:hover { background-color: #7f8c8d; }
+
+.btn-warning { background-color: var(--warning-color); }
+.btn-warning:hover { background-color: #d68910; }
+
+.btn-danger { background-color: var(--danger-color); }
+.btn-danger:hover { background-color: #c0392b; }
+
+/* =========================================
+   Formulaires standards (Global)
+   ========================================= */
+form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+input[type="text"], select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    flex-grow: 1;
+    max-width: 400px;
+    width: 100%;
+}
+
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+

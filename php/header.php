@@ -13,6 +13,7 @@ if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
 ?>
 <!DOCTYPE html>
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
         <?php
         if (isset($page_css)){
@@ -24,21 +25,22 @@ if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === false){
         
         ?>
     </head>
-    <header>
-        <?php 
-       
-
-        if (!empty($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
-            ?><p>Connecté en tant que : <?php echo $_SESSION["pseudo"]; ?></p><?php
-        }else{
-            ?><nav><button><a href="connexion.php">se connecter</a></button></nav><?php
-        }
-    
-        ?>
-    </header>
-
-
     <body>
+        <header>
+            <?php 
+        
+
+            if (!empty($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
+                ?><p>Connecté en tant que : <?php echo $_SESSION["pseudo"]; ?></p><?php
+            }else{
+                ?><nav><button><a href="connexion.php">se connecter</a></button></nav><?php
+            }
+        
+            ?>
+        </header>
+
+
+    
 
        
         

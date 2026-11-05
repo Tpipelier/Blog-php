@@ -4,47 +4,10 @@ $titre = "Blog";
 require_once('header.php');
 require_once('fonction_accueil.php');
 
-try {
-    $connexion = new PDO('mysql:host=localhost;dbname=blog;', 'root', '');
-    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die('Erreur PDO: ' . $e->getMessage());
-} catch (Exception $e) {
-    die('Erreur Générale : ' . $e->getMessage());
-}
-
-$sql = 'SELECT * FROM categorie ORDER BY nom ASC';
-$query = $connexion->query($sql, PDO::FETCH_ASSOC);
-$categories = $query->fetchAll();
-
-if (isset($_GET['categorie_id'])) {
-    $categorie_active = $_GET['categorie_id'];
-} elseif (isset($categories[0]['id'])) {
-    $categorie_active = $categories[0]['id'];
-} else {
-    $categorie_active = null;
-}
-
-if (isset($_GET['pseudo'])) {
-    $stmt = $connexion->prepare("SELECT * FROM article WHERE pseudo = :pseudo");
-    $stmt->execute(['pseudo' => $_GET['pseudo']]);
-    $vals = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} elseif ($categorie_active !== null) {
-    $stmt = $connexion->prepare("
-        SELECT article.* 
-        FROM article
-        JOIN article_categorie ON article.id = article_categorie.article_id
-        WHERE article_categorie.categorie_id = :cat_id
-    ");
-    $stmt->execute(['cat_id' => $categorie_active]);
-    $vals = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} else {
-    $sql = 'SELECT * FROM article';
-    $res = $connexion->query($sql, PDO::FETCH_ASSOC);
-    $vals = $res->fetchAll();
-}
+$donnees = recuperer_donnees_article();
+$categories = $donnees['categories'];
+$categorie_active = $donnees['categorie_active'];
+$vals = $donnees['articles'];
 ?>
 
 <section>
@@ -59,7 +22,8 @@ foreach ($categories as $cat) {
     <?php
 }
 if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
-    ?> <a href="modifier_categories.php" class="btn-navigation">/admin modifier les catégories</a><?php
+    ?> <a href="modifier_categories.php" class="btn-navigation">/admin modifier les catégories</a>
+    <?php
 }
 ?>
 
