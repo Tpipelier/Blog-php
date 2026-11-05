@@ -1,5 +1,5 @@
 <?php
-$titre = "Blog";
+$titre = "Article";
 require_once('header.php');
 require_once('fonction_commentaire.php');
 
@@ -8,10 +8,8 @@ $vals = $donnees['articles'];
 $com = $donnees['commentaire'];
 ?>
 
-<div>
-    <h1>Blog php</h1>
-</div>
-<form method="GET" action="">
+
+<form method="POST" action="">
     <label for="commentaire">commentaire :</label>
     <input type="text" name="commentaire" id="commentaire" placeholder="Entrez un commentaire" />
     <button type="submit">envoyer</button>
@@ -32,10 +30,7 @@ if (!empty($vals)) {
             }
         }
     }
-} else {
-    echo '<p>article(s) introuvable(s)</p>';
-}
-
+} 
     
 ?>
 <?php
