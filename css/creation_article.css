@@ -1,0 +1,41 @@
+/* =========================================================
+   creation_article.css : LAYOUT du formulaire de création
+   ========================================================= */
+
+section {
+    max-width: 640px;
+    margin-inline: auto;
+}
+
+h2 {
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+select[multiple] {
+    min-height: 120px;
+}
+
+form button {
+    align-self: flex-start;
+}
+
+.erreur {
+    margin-top: 15px;
+}

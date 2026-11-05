@@ -28,7 +28,8 @@ if(isset($_POST["deconnexion"])){
 <!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <link rel="stylesheet" type="text/css" href="../css/header.css">
         <?php
         if (isset($page_css)){
             echo '<link rel="stylesheet" type="text/css" href="../css/'.$page_css. '">';
@@ -60,10 +61,11 @@ if(isset($_POST["deconnexion"])){
 
         }
 
-
-       
-    
         ?>
+        <section>
+        <h1>Blog php</h1>
+        </section>
+
         </header>
 
 

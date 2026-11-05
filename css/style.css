@@ -1,18 +1,8 @@
-/* =========================================
-   Variables & Reset (Communs)
-   ========================================= */
-:root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --hover-color: #2980b9;
-    --danger-color: #e74c3c;
-    --warning-color: #f39c12;
-    --bg-color: #f8f9fa;
-    --text-color: #333333;
-    --border-color: #e0e0e0;
-    --border-radius: 6px;
-    --spacing: 20px;
-}
+/* =========================================================
+   style.css : apparence GLOBALE (couleurs, typo, cartes,
+   boutons, champs). Aucun placement ici, juste le look.
+   Classes du site : .erreur  .article
+   ========================================================= */
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -22,88 +12,119 @@
 
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    background-color: #f8f9fa;
+    color: #333333;
     line-height: 1.6;
-    padding: var(--spacing);
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* =========================================
-   Typographie Globale
-   ========================================= */
+/* ---------- Typographie ---------- */
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
 h1 {
-    color: var(--primary-color);
-    margin-bottom: var(--spacing);
     font-size: 2.5rem;
     text-align: center;
 }
 
-h2 {
-    color: var(--primary-color);
-    margin-bottom: 30px;
+a {
+    color: #3498db;
 }
 
-/* =========================================
-   Boutons (Partagés partout)
-   ========================================= */
-.btn-navigation, 
-button[type="submit"], 
-.form-reset-link,
-.btn-warning,
-.btn-danger {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--secondary-color);
-    color: #ffffff;
+a:hover {
+    color: #2980b9;
+}
+
+/* ---------- Sections = cartes blanches ---------- */
+section {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Une section qui est un article */
+.article {
+    border-left: 5px solid #3498db;
+}
+
+/* ---------- Liens de catégories (liens directs du body) ---------- */
+body > a {
+    padding: 8px 16px;
     text-decoration: none;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
+    color: #2c3e50;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-button[type="submit"]:hover, .btn-navigation:hover { background-color: var(--hover-color); }
-
-.form-reset-link { background-color: #95a5a6; }
-.form-reset-link:hover { background-color: #7f8c8d; }
-
-.btn-warning { background-color: var(--warning-color); }
-.btn-warning:hover { background-color: #d68910; }
-
-.btn-danger { background-color: var(--danger-color); }
-.btn-danger:hover { background-color: #c0392b; }
-
-/* =========================================
-   Formulaires standards (Global)
-   ========================================= */
-form {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+body > a:hover {
+    background-color: #3498db;
+    border-color: #3498db;
+    color: #ffffff;
 }
 
+/* ---------- Formulaires ---------- */
 label {
     font-weight: 600;
-    color: var(--primary-color);
+    color: #2c3e50;
 }
 
-input[type="text"], select {
+input, select, textarea {
     padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-size: 1rem;
-    flex-grow: 1;
-    max-width: 400px;
-    width: 100%;
+    font: inherit;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
 }
 
-input[type="text"]:focus, select:focus {
+input:focus, select:focus, textarea:focus {
     outline: none;
-    border-color: var(--secondary-color);
+    border-color: #3498db;
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
+form h3 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* ---------- Boutons : <button> et lien seul dans une section ---------- */
+button, section > a {
+    display: inline-block;
+    padding: 10px 20px;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #3498db;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, section > a:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+
+/* Bouton de suppression (sans classe) */
+button[value="delete"] {
+    background-color: #e74c3c;
+}
+
+button[value="delete"]:hover {
+    background-color: #c0392b;
+}
+
+/* ---------- Message d'erreur ---------- */
+.erreur {
+    color: #e74c3c;
+    font-weight: bold;
+}

@@ -1,5 +1,7 @@
 <?php
 $titre = "Créer un article";
+
+$page_css = "creation_article.css";
 require_once('header.php');
 require_once('fonction_creation_article.php');
 

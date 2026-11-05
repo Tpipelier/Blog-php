@@ -1,14 +1,11 @@
-<?php declare(strict_types=1);
-session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<?php 
+$page_css = "connexion.css";
+$titre = "Connexion";
+
+require_once('header.php');
 require_once('fonction_connexion.php');
-//
-//if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
-//   header("location: accueil.php");
-//  exit(0);
-//} 
+
+
 
 
 
@@ -35,16 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<html>
 
-<head>
 
-    <title>Connexion</title>
-
-    <link rel="stylesheet" type="text/css" href="../css/connexion.css">
-</head>
-
-<body>
     <section>
         <h2>Connexion</h2>
         <form method=POST action=connexion.php>

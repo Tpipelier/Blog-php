@@ -1,5 +1,5 @@
 <?php
-$titre = "modifier_categories";
+$titre = "Modifier Categories";
 $page_css = "modifier_categories.css";
 require_once('header.php');
 

@@ -1,55 +1,48 @@
+/* =========================================================
+   connexion.css : LAYOUT de la page de connexion
+   Structure : body > section (h2, form, p.erreur)
+   ========================================================= */
 
-
-
-
-section {
+/* La page : une seule colonne de 380px max, centrée
+   horizontalement et verticalement */
+body {
     display: grid;
-    grid-template-columns: 100px 100px;
-
-    width: fit-content;   
-    margin: 0 auto;       
-
-    padding: 20px;
+    grid-template-columns: min(100%, 380px);
     justify-content: center;
-    align-items: center;
-    border: 2px black solid;
-    border-radius: 5%;
-    transform: rotate(2deg);
-
-
+    align-content: center;
+    min-height: 100vh;
 }
 
-h2{
-    grid-area: 1/1/1/3;
-    text-align:center;
-
+/* La carte */
+section {
+    margin-bottom: 0;
 }
 
-input{
-    width:100%;
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
 }
 
-form{
-     display: grid;
-     grid-area: 2/1/2/3;
-     gap:10px;
-
+/* Formulaire : champs empilés, tous à la même largeur */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-
-
-label{
-    display:block;
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.erreur{
-    color:red;
-    font-weight: bold;
-    grid-area: 3/1/3/3;
+/* Bouton sur toute la largeur de la carte */
+button {
+    width: 100%;
 }
 
-button{
-    background-color:#71b8e4;
-
-    padding:5px;
+/* Message d'erreur sous le formulaire */
+.erreur {
+    margin-top: 20px;
+    text-align: center;
 }
