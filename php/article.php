@@ -2,9 +2,6 @@
 $titre = "Blog";
 require_once('header.php');
 
-
-
-
 ?>
 
 <div>
@@ -12,19 +9,14 @@ require_once('header.php');
 </div>
 <form method="GET" action="">
     <label for="commentaire">commentaire :</label>
-    <input type="text" name="pseudo" id="commentaire" placeholder="Entrez un commentaire" />
+    <input type="text" name="commentaire" id="commentaire" placeholder="Entrez un commentaire" />
     <button type="submit">envoyer</button>
     
 </form>
 <?php
 
     if(!empty($vals)){
-        foreach ($vals as $row) {
-                showArticle($row['titre'], $row['pseudo']);
-            
-        }
-    }else{
-        echo '<p>pseudo introuvable</p>';
+        creation_commentaire($commentaire,$article_id,$pseudo)
     }
 ?>
 <?php
