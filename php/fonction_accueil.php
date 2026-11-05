@@ -26,7 +26,7 @@ function recuperer_donnees_article()
 	$sql = 'SELECT * FROM categorie ORDER BY nom ASC';
 	$query = $connexion->query($sql, PDO::FETCH_ASSOC);
 	$categories = $query->fetchAll();
-
+	$query->closeCursor();
 	if (isset($_GET['categorie_id'])) {
 		$categorie_active = $_GET['categorie_id'];
 	} elseif (isset($categories[0]['id'])) {
@@ -40,6 +40,8 @@ function recuperer_donnees_article()
 		$stmt->execute(['pseudo' => $_GET['pseudo']]);
 		$vals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+		$stmt->closeCursor();
+
 	} elseif ($categorie_active !== null) {
 		$stmt = $connexion->prepare("
         SELECT article.* 
@@ -49,11 +51,13 @@ function recuperer_donnees_article()
     ");
 		$stmt->execute(['cat_id' => $categorie_active]);
 		$vals = $stmt->fetchAll(PDO::FETCH_ASSOC);
+		$stmt->closeCursor();
 
 	} else {
 		$sql = 'SELECT * FROM article';
 		$res = $connexion->query($sql, PDO::FETCH_ASSOC);
 		$vals = $res->fetchAll();
+		$stmt->closeCursor();
 	}
 	return [
 		'categories' => $categories,

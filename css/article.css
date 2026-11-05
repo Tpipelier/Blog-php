@@ -1,0 +1,232 @@
+/* =========================================================
+   article.css : page d'un article
+   Structure :
+   body > section              (l'article : h2, h2, p)
+        > form                 (supprimer l'article, si auteur)
+        > form                 (nouveau commentaire)
+        > section.zone_commentaire
+              > section × n    (p + form  OU  p + p.pseudo_com)
+   ========================================================= */
+
+/* ---------- Fond de la page ---------- */
+body {
+    background-color: #ffffff;
+}
+
+/* ---------- Colonne centrale ---------- */
+body > section,
+body > form {
+    max-width: 720px;
+    margin-inline: auto;
+}
+
+/* ---------- Formulaires : éléments sur une ligne ---------- */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+}
+
+/* =========================================================
+   1. L'ARTICLE
+   ========================================================= */
+body > section:not(.zone_commentaire) {
+    margin-bottom: 20px;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #b8c6d1;
+    border-left: 6px solid #3498db;
+    border-radius: 6px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Titre */
+body > section:not(.zone_commentaire) h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+/* Description (le 2e h2 est mis en forme comme un texte) */
+body > section:not(.zone_commentaire) h2 + h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.7;
+    color: #333333;
+}
+
+/* "de <auteur>" */
+body > section:not(.zone_commentaire) p {
+    margin-top: 20px;
+    padding-top: 12px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #5d6d7e;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* =========================================================
+   2. BOUTON "SUPPRIMER L'ARTICLE" (si auteur)
+   ========================================================= */
+body > form:has(button[name="art"]) {
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+/* =========================================================
+   3. FORMULAIRE D'AJOUT DE COMMENTAIRE
+   ========================================================= */
+body > form:has(textarea) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+
+    margin-bottom: 30px;
+    padding: 20px;
+
+    background-color: #f3f6f9;
+    border: 1px solid #b8c6d1;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+body > form:has(textarea) label {
+    font-size: 1.1rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    background-color: #ffffff;
+    border: 1px solid #b8c6d1;
+}
+
+body > form:has(textarea) button {
+    align-self: flex-end;
+}
+
+/* =========================================================
+   4. ZONE DES COMMENTAIRES
+   ========================================================= */
+
+/* Le conteneur n'est pas une carte : il regroupe les commentaires */
+.zone_commentaire {
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Titre généré par le CSS */
+.zone_commentaire::before {
+    content: "Commentaires";
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Message quand il n'y a aucun commentaire */
+.zone_commentaire:not(:has(section))::after {
+    content: "Aucun commentaire pour le moment. Soyez le premier !";
+    display: block;
+    padding: 25px;
+    text-align: center;
+    font-style: italic;
+    color: #5d6d7e;
+    background-color: #f3f6f9;
+    border: 2px dashed #b8c6d1;
+    border-radius: 6px;
+}
+
+/* Un commentaire : carte gris-bleu, bordure et ombre bien visibles */
+.zone_commentaire section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin-bottom: 15px;
+    padding: 15px 20px;
+
+    background-color: #eef2f6;
+    border: 1px solid #b8c6d1;
+    border-left: 5px solid #8fa5b6;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zone_commentaire section:last-of-type {
+    margin-bottom: 0;
+}
+
+.zone_commentaire section:hover {
+    transform: translateX(4px);
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.16);
+}
+
+/* Texte du commentaire */
+.zone_commentaire section p:first-child {
+    overflow-wrap: anywhere;
+}
+
+/* "Posté par ..." en bas à droite */
+.pseudo_com {
+    align-self: flex-end;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #4a5a68;
+}
+
+/* Mes commentaires (ceux qui ont le bouton supprimer) : fond bleu + badge */
+.zone_commentaire section:has(form) {
+    background-color: #e1effa;
+    border-color: #9cc9ea;
+    border-left-color: #3498db;
+}
+
+.zone_commentaire section:has(form)::before {
+    content: "Votre commentaire";
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #2176ae;
+}
+
+.zone_commentaire form {
+    align-self: flex-end;
+}
+
+/* =========================================================
+   5. BOUTONS DE SUPPRESSION
+   ========================================================= */
+button[name="art"],
+button[name="sup"] {
+    background-color: #e74c3c;
+}
+
+button[name="art"]:hover,
+button[name="sup"]:hover {
+    background-color: #c0392b;
+}
+
+button[name="sup"] {
+    padding: 6px 14px;
+}
+
+/* =========================================================
+   6. PETITS ÉCRANS
+   ========================================================= */
+@media (max-width: 600px) {
+    body > section:not(.zone_commentaire) {
+        padding: 20px;
+    }
+
+    body > section:not(.zone_commentaire) h2 {
+        font-size: 1.5rem;
+    }
+}

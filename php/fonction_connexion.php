@@ -41,6 +41,7 @@
                 $stmt->execute();
 
                 $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+                $stmt->closeCursor();
                 if ($utilisateur === false) {
                     return -1; //pseudo incorrect
                 }
@@ -106,8 +107,11 @@
         if($slc_pseudo->fetch() == false && $slc_email->fetch() == false){
             return false;
         }
-        else
+        else{
             return true;
+        }
+        $slc_email->closeCursor();
+        $slc_pseudo->closeCursor();
 
   
     }

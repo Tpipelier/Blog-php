@@ -7,7 +7,7 @@ function affiche_article(?string $titreArticle, string $nomAuteur, string $descr
 	echo "<section>";
 	echo "<h2>" . htmlspecialchars($titreArticle) . "</h2>";
 	echo "<h2>" . nl2br(htmlspecialchars($description)) . "</h2>";
-	echo "<p> de" . htmlspecialchars($nomAuteur) . "</p>";
+	echo "<p> de " . htmlspecialchars($nomAuteur) . "</p>";
 	echo "</section>";
 }
 

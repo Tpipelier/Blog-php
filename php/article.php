@@ -1,5 +1,6 @@
 <?php
 $titre = "Article";
+$page_css = "article.css";
 require_once('header.php');
 require_once('fonction_commentaire.php');
 
@@ -33,12 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 
 
-<form method="POST" action="">
-    <label for="commentaire">commentaire :</label>
-    <input type="text" name="commentaire" id="commentaire" placeholder="Entrez un commentaire" />
-    <button type="submit" name="ajout">envoyer</button>
-   
-</form>
+
 <?php
 
 
@@ -57,28 +53,39 @@ if (!empty($vals)) {
                 </form>
                  <?php       
             }
-
+?>
+<form method="POST" action="">
+    <label for="commentaire">Ajouter un commentaire</label>
+    <textarea type="text" name="commentaire" id="commentaire" placeholder="Entrez un commentaire"></textarea>
+    <button type="submit" name="ajout">Envoyer</button>
+   
+</form>
+<section class='zone_commentaire'>
+<?php
 
             foreach ($com as $line) {
                 if($line['article_id']==$_GET['id_article']){
                     echo "<section>";
-                    echo "<h3>" . htmlspecialchars($line['description']) . "</h3>";
+                    echo "<p>" . nl2br(htmlspecialchars($line['description'])) . "</p>";
                     if($line['pseudo']==$_SESSION['pseudo']){
                         ?>                 
                         <form method="POST" action="">
                             <input type="hidden" name="com_id" value="<?= $line['id'] ?>">
-                            <button type="submit" name="sup">supprimer commentaire</button>
+                            <button type="submit" name="sup">Supprimer</button>
                         </form>
                         <?php
+                    }
+                    else{
+                        echo "<p class='pseudo_com'>Posté par " .$line['pseudo'] . "</p>";
                     }
                     echo "</section>";
                 }
             }
         }
     }
-} 
-    
-?>
+} ?>
+</section>
+
 <?php
 require_once('footer.php');
 ?>

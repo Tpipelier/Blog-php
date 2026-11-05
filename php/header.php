@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-    
+                                                                         // permet d'obtenir le nom du fichier de la page
 if ((!isset(($_SESSION["connecter"])) || $_SESSION["connecter"] === false)  && basename($_SERVER['PHP_SELF']) != 'connexion.php'){
     header("location: connexion.php");
     exit(0);
@@ -45,7 +45,7 @@ if(isset($_POST["deconnexion"])){
             <?php 
        
 
-        if (!empty($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
+        if (isset($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
             ?><p>Connecté en tant que : <?php echo $_SESSION["pseudo"]; ?></p>
             
             <form method=POST action="">
@@ -55,10 +55,9 @@ if(isset($_POST["deconnexion"])){
 
 
             </form>
-            <?php
-
             
-
+            <?php
+            
         }
 
         ?>
@@ -67,6 +66,8 @@ if(isset($_POST["deconnexion"])){
         </section>
 
         </header>
+
+
 
 
     
