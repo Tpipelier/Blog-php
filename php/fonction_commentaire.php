@@ -51,7 +51,8 @@ function creation_commentaire(string $description, int $article_id, string $pseu
 
 
             $stmt->execute();
-            header("location: article.php");
+
+            //header("location: article.php");
 
             exit(0);
 

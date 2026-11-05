@@ -6,6 +6,16 @@ require_once('fonction_commentaire.php');
 $donnees = recuperer_donnees_article();
 $vals = $donnees['articles'];
 $com = $donnees['commentaire'];
+
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
+
+if (isset($_SESSION["connecter"]) && !empty($_POST['commentaire'])) {
+    creation_commentaire($_POST['commentaire'],$_GET['id_article'],$_SESSION['pseudo']);
+}
+}
+
 ?>
 
 
@@ -16,6 +26,11 @@ $com = $donnees['commentaire'];
    
 </form>
 <?php
+
+
+
+
+
 if (!empty($vals)) {
     foreach ($vals as $row) {
         
@@ -25,6 +40,13 @@ if (!empty($vals)) {
                 if($line['article_id']==$_GET['id_article']){
                     echo "<section>";
                     echo "<h3>" . htmlspecialchars($line['description']) . "</h3>";
+                    if($line['pseudo']==$_SESSION['pseudo']){
+                        ?>                 
+                        <form method="POST" action="">
+                            <button type="submit">supprimer commentaire</button>
+                        </form>
+                        <?php
+                    }
                     echo "</section>";
                 }
             }
