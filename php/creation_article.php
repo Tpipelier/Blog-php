@@ -1,5 +1,7 @@
 <?php
 $titre = "Créer un article";
+
+$page_css = "creation_article.css";
 require_once('header.php');
 require_once('fonction_creation_article.php');
 
@@ -25,11 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method=POST action=creation_article.php>
 
         <label>Titre
-            <input name="titre" type="text">
+            <input name="titre" type="text" value=<?php
+                if(isset($_POST['titre']) && !empty($_POST['titre'])){
+                    echo htmlspecialchars($_POST['titre']);
+
+                    }?>>
         </label>
 
         <label>Description
-            <textarea name="description" type="text"></textarea>
+            <textarea name="description" type="text" ><?php
+                if(isset($_POST['description']) && !empty($_POST['description'])){
+                    echo htmlspecialchars($_POST['description']);
+
+                    }?></textarea>
         </label>
         <label>Catégorie
             <select name="categorie[]" multiple>

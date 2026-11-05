@@ -1,17 +1,14 @@
-<?php declare(strict_types=1);
-session_start();
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<?php 
+$page_css = "connexion.css";
+$titre = "Connexion";
+
+require_once('header.php');
 require_once('fonction_connexion.php');
-//
-//if(isset($_SESSION["connecter"]) && $_SESSION["connecter"] === true){
-//   header("location: accueil.php");
-//  exit(0);
-//} 
 
 
 
+
+// $_SERVER['REQUEST_METHOD'] renvoie la méthode de requete utilisée (c'est beaucoup plus propre)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['mdp']) && !empty($_POST['mdp'])) {
         $code_erreur = connexion(htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['email']), htmlspecialchars($_POST['mdp']));
@@ -35,28 +32,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<html>
 
-<head>
 
-    <title>Connexion</title>
-
-    <link rel="stylesheet" type="text/css" href="../css/connexion.css">
-</head>
-
-<body>
     <section>
         <h2>Connexion</h2>
         <form method=POST action=connexion.php>
             <label>Pseudo
-                <input name="pseudo" type="text">
+                <input name="pseudo" type="text" value=<?php
+                if(isset($_POST['pseudo']) && !empty($_POST['pseudo'])){
+                    echo htmlspecialchars($_POST['pseudo']);
+
+                    }?>>
             </label>
 
             <label>E-mail
-                <input name="email" type="text">
+                <input name="email" type="text" value=<?php
+                if(isset($_POST['email']) && !empty($_POST['email'])){
+                    echo htmlspecialchars($_POST['email']);
+
+                    }?>>
             </label>
             <label>Mot de passe
-                <input name="mdp" type="password">
+                <input name="mdp" type="password" >
             </label>
 
 
