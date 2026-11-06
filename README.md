@@ -2,6 +2,8 @@
 
 Par Tyron KHEM, Théo PIPELIER, Swan GRIDEL | G1S3
 
+CSS généré par IA
+
 Compte admin: 
 
 Pseudo : admin

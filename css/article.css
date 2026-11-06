@@ -131,7 +131,7 @@ body > form:has(textarea) button {
 
 /* Message quand il n'y a aucun commentaire */
 .zone_commentaire:not(:has(section))::after {
-    content: "Aucun commentaire pour le moment. Soyez le premier !";
+    content: "Aucun commentaire pour le moment.";
     display: block;
     padding: 25px;
     text-align: center;

@@ -72,6 +72,8 @@ function supprimer_commentaire(int $commentaire_id, int $article_id){
     $stmt = $commentaire->prepare("DELETE from  commentaire WHERE id = ? and article_id=?");
     $stmt->bindParam(1, $commentaire_id);
     $stmt->bindParam(2, $article_id);
+
+
             
 
     $stmt->execute();
@@ -91,14 +93,27 @@ function supprimer_commentaire(int $commentaire_id, int $article_id){
 
 function supprimer_article(int $article_id){
     try{
-    $commentaire = new PDO('mysql:host=localhost;dbname=blog','root','');
-    $commentaire->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $connexion = new PDO('mysql:host=localhost;dbname=blog','root','');
+    $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $commentaire->prepare("DELETE from  article WHERE id = ? ");
+    $stmt = $connexion->prepare("DELETE from  article WHERE id = ? ");
     $stmt->bindParam(1, $article_id);
     $stmt->execute();
 
+    //supression des commentaires et lien entre catégories
+
+    $commentaire =  $connexion->prepare("DELETE from  commentaire WHERE article_id = ?");
+    $commentaire->bindParam(1, $article_id);
+    $commentaire->execute();
+
+
+    $article_categorie =  $connexion->prepare("DELETE from  article_categorie WHERE article_id = ?");
+    $article_categorie->bindParam(1, $article_id);
+    $article_categorie->execute();
+
+
     header("location: index.php");
+    exit(0);
     
 
     } catch(PDOException $e){
