@@ -4,7 +4,7 @@ Par Tyron KHEM, Théo PIPELIER, Swan GRIDEL | G1S3
 
 CSS généré par IA
 
-les tables sont disponible sur le git dans blog.sql
+les tables sont disponibles sur le git dans blog.sql
 
 Compte admin: 
 
